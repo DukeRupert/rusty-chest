@@ -1,5 +1,5 @@
 {
-  "name": "kvdb (Rust)",
+  "name": "kvdb (Rust + C)",
   "image": "mcr.microsoft.com/devcontainers/rust:1-bookworm",
 
   "features": {
@@ -13,7 +13,9 @@
         "vadimcn.vscode-lldb",
         "tamasfe.even-better-toml",
         "serayuzgur.crates",
-        "usernamehw.errorlens"
+        "usernamehw.errorlens",
+        "ms-vscode.cpptools",
+        "llvm-vs-code-extensions.vscode-clangd"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -29,7 +31,7 @@
     }
   },
 
-  "postCreateCommand": "rustup component add rustfmt clippy && cargo install cargo-watch cargo-nextest",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y gdb clang clangd clang-format valgrind && rustup component add rustfmt clippy && cargo install cargo-watch cargo-nextest",
 
   "remoteUser": "vscode"
 }
