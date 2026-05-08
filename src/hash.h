@@ -27,4 +27,11 @@ kv_table *kv_table_new(size_t cap);
 /* Free the table and all entries it owns. Safe to call with NULL */
 void kv_table_free(kv_table *t);
 
+/* Insert or update key=value. Returns 0 on success, -1 on allocation failure. */
+int kv_table_set(kv_table *t, const char *key, const char *value);
+
+/* Look up a key. Returns the stored value (owned by the table) or NULL if absent. 
+ * The returned pointer is valid only until the next set/del on this key. */
+const char *kv_table_get(kv_table *t, const char *key);
+
 #endif
