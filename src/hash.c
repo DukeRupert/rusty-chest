@@ -32,4 +32,14 @@ kv_table *kv_table_new(size_t cap) {
   t->cap = cap;
   t->len = 0;
   return t;
-};
+}
+
+void kv_table_free(kv_table *t) {
+  if (t == NULL) {
+    return;
+  }
+
+  /* No entries to free yet — chains are all empty in Step 1.3. */
+  free(t->buckets);
+  free(t);
+}
